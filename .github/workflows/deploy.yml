@@ -13,9 +13,9 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "index.html"
+          source: "index.html,index.php,order.php,health.php,db-connect.php"
           target: "/tmp/"
-      - name: Move file into place and reload
+      - name: Move files into place and reload
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
@@ -23,4 +23,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             sudo mv /tmp/index.html /usr/share/nginx/html/index.html
+            sudo mv /tmp/index.php /usr/share/nginx/html/index.php
+            sudo mv /tmp/order.php /usr/share/nginx/html/order.php
+            sudo mv /tmp/health.php /usr/share/nginx/html/health.php
+            sudo mv /tmp/db-connect.php /usr/share/nginx/html/db-connect.php
             sudo systemctl reload nginx
