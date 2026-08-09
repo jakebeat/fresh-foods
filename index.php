@@ -30,7 +30,7 @@ button { margin-top: 16px; padding: 10px 20px; }
 <div class="product">
     <img src="https://freshfoods-jbeaty-assets.s3.us-east-2.amazonaws.com/products/banana-2449019_640.jpg" alt="<?= htmlspecialchars($product['item_name']) ?>">
     <h2><?= htmlspecialchars($product['item_name']) ?></h2>
-    <p>$<?= htmlspecialchars(number_format($product['price'], 2)) ?> — <?= (int)$product['stock_qty'] ?> in stock</p>
+    <p>$<?= htmlspecialchars(number_format($product['price'], 2)) ?> — <?= (int)$product['stock_qty'] ?> in stock <?php if ((int)$product['stock_qty'] <= 5): ?>(Low stock!)<?php endif; ?></p>
 </div>
 <?php endforeach; ?>
 
