@@ -4,6 +4,10 @@ require __DIR__ . '/db-connect.php';
 $products = $pdo->query('SELECT item_id, item_name, price, stock_qty, image_url FROM inventory ORDER BY item_id')->fetchAll();
 $orderSuccess = isset($_GET['order']) && $_GET['order'] === 'success';
 $fallbackImg = 'https://freshfoods-jbeaty-assets.s3.us-east-2.amazonaws.com/products/banana-2449019_640.jpg';
+
+// Bumped whenever product artwork is replaced in S3 so browsers fetch the new
+// file instead of serving a cached copy from the identical URL.
+$imageVersion = '3';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,8 +66,9 @@ h2.section { font-size: 1.4rem; border-bottom: 2px solid var(--green); padding-b
 <h2 class="section">Our Products</h2>
 <div class="grid">
 <?php foreach ($products as $product): ?>
+  <?php $img = ($product['image_url'] ?: $fallbackImg) . '?v=' . $imageVersion; ?>
   <div class="product">
-    <img src="<?= htmlspecialchars($product['image_url'] ?: $fallbackImg) ?>" alt="<?= htmlspecialchars($product['item_name']) ?>" loading="lazy">
+    <img src="<?= htmlspecialchars($img) ?>" alt="<?= htmlspecialchars($product['item_name']) ?>" loading="lazy">
     <div class="body">
       <h3><?= htmlspecialchars($product['item_name']) ?></h3>
       <span class="price">$<?= htmlspecialchars(number_format($product['price'], 2)) ?></span>
