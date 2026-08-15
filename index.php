@@ -51,7 +51,7 @@ h2.section { font-size: 1.4rem; border-bottom: 2px solid var(--green); padding-b
 <body>
 <header>
   <span class="logo">Fresh Foods</span>
-  <span class="tagline">Farm-fresh groceries, delivered direct</span>
+  <span class="tagline">Fresh produce, delivered to your door</span>
 </header>
 <main>
 
