@@ -34,8 +34,8 @@ h2.section { font-size: 1.4rem; border-bottom: 2px solid var(--green); padding-b
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
 .product { background: #fff; border: 1px solid var(--card-border); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 1px 3px rgba(38,50,40,0.08); transition: box-shadow 0.15s ease, transform 0.15s ease; }
 .product:hover { box-shadow: 0 6px 16px rgba(38,50,40,0.14); transform: translateY(-2px); }
-.product img { width: 100%; height: 160px; object-fit: cover; display: block; background: var(--green-light); }
-.product .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.product img { width: 100%; height: 220px; object-fit: contain; display: block; background: #fff; padding: 10px; }
+.product .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; border-top: 1px solid var(--card-border); }
 .product h3 { margin: 0; font-size: 1.05rem; }
 .price { font-family: Arial, sans-serif; font-weight: bold; color: var(--green-dark); font-size: 1.05rem; }
 .stock { font-family: Arial, sans-serif; font-size: 0.8rem; color: var(--muted); margin-top: auto; }
